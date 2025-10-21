@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.flake8",
+        "ms-python.black-formatter",
+        "ms-python.mypy-type-checker",
+        "ms-toolsai.jupyter",
+        "ms-vscode.test-adapter-converter",
+        "ms-python.pytest",
+        "redhat.vscode-yaml",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode.vscode-json",
+        "GitHub.copilot",
+        "ms-vscode-remote.remote-containers"
+    ]
+}

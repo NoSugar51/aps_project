@@ -1,0 +1,71 @@
+---
+# Configurações gerais do sistema
+system:
+  name: "APS Simulator"
+  version: "1.0.0"
+  mode: "simulation"
+
+# Parâmetros do simulador
+simulation:
+  time_step_minutes: 5
+  initial_glucose: 100
+  noise_level: 0.02
+  duration_hours: 24
+
+# Configurações do controlador
+controller:
+  algorithm: "hybrid"
+  target_glucose: 100
+  pid:
+    kp: 0.001
+    ki: 0.0001
+    kd: 0.00001
+  max_dose: 10.0
+  min_dose: 0.0
+
+# Parâmetros de segurança
+safety:
+  hypo_threshold: 70
+  hyper_threshold: 180
+  max_bolus: 4.0
+  max_daily_insulin: 50
+
+# Configurações de logging
+logging:
+  level: "INFO"
+  file: "logs/aps_system.log"
+
+# Configurações do banco de dados
+database:
+  type: "sqlite"
+  path: "data/aps.db"
+  backup_enabled: true
+  backup_interval: 3600
+
+ml:
+  model_path: "models/glucose_predictor.h5"
+  batch_size: 32
+  learning_rate: 0.001
+  train_interval: 24
+  min_samples: 100
+  features:
+    - glucose_history
+    - insulin_history
+    - meal_history
+  model_params:
+    layers: [64, 32, 16]
+    dropout: 0.2
+    activation: "relu"
+
+patient:
+  weight_kg: 70
+  carb_ratio: 10
+  sensitivity: 45
+  basal_rate: 1.0
+  target_glucose: 100
+  age: 30
+  gender: "M"
+  diabetes_type: 1
+  diagnosis_year: 2010
+  hba1c: 7.0
+  daily_insulin: 40

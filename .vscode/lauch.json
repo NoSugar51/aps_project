@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "APS - Simulação",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "args": ["--mode", "simulation", "--duration", "24", "--acceleration", "5"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "APS - Interface Web",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "args": ["--mode", "simulation", "--web"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Cenários de Teste",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/examples/run_scenarios.py",
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "name": "Testes Debug",
+            "type": "python",
+            "request": "launch",
+            "module": "pytest",
+            "args": ["tests/", "-v", "--tb=short"],
+            "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

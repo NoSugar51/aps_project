@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Instalar Dependências",
+            "type": "shell",
+            "command": "pip install -r requirements.txt",
+            "group": "build"
+        },
+        {
+            "label": "Executar Testes",
+            "type": "shell",
+            "command": "pytest tests/ -v --cov=src --cov-report=html",
+            "group": "test"
+        },
+        {
+            "label": "Formatar Código",
+            "type": "shell",
+            "command": "black src/ tests/ examples/",
+            "group": "build"
+        },
+        {
+            "label": "Lint Código",
+            "type": "shell",
+            "command": "flake8 src/ tests/",
+            "group": "test"
+        },
+        {
+            "label": "Executar Simulação",
+            "type": "shell",
+            "command": "python src/main.py --mode simulation --duration 4 --acceleration 10",
+            "group": "test"
+        }
+    ]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Monitor APS</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Monitor do Sistema de Pâncreas Artificial</h1>
+            <div class="current-status">
+                <div class="glucose">
+                    <span id="current-glucose">---</span>
+                    <span class="unit">mg/dL</span>
+                </div>
+                <div class="insulin">
+                    <span>Última dose: </span>
+                    <span id="last-dose">---</span>
+                    <span class="unit">U</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="glucose-chart" class="chart"></div>
+
+            <div class="metrics-panel">
+                <h2>Métricas</h2>
+                <div id="tir" class="metric">Tempo em faixa: ---%</div>
+                <div id="hypo-risk" class="metric">Risco de hipo: ---%</div>
+                <div id="variability" class="metric">Variabilidade: ---%</div>
+            </div>
+
+            <div class="controls">
+                <button onclick="openMealModal()" class="primary">+ Refeição</button>
+                <button onclick="injectScenario('exercise')">Exercício</button>
+                <button onclick="injectScenario('stress')">Stress</button>
+            </div>
+
+            <!-- Modal de Refeição -->
+            <div id="mealModal" class="modal">
+                <div class="modal-content">
+                    <h2>Adicionar Refeição</h2>
+                    <form id="mealForm" onsubmit="addMeal(event)">
+                        <div class="form-group">
+                            <label>Carboidratos (g):</label>
+                            <input type="number" id="carbsInput" required min="0" max="200" step="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Perfil de Absorção:</label>
+                            <select id="absorptionProfile">
+                                <option value="fast">Rápido</option>
+                                <option value="medium" selected>Médio</option>
+                                <option value="slow">Lento</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Índice Glicêmico:</label>
+                            <input type="number" id="giIndex" value="50" min="0" max="100">
+                        </div>
+                        <div class="modal-buttons">
+                            <button type="submit" class="primary">Adicionar</button>
+                            <button type="button" onclick="closeMealModal()">Cancelar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="monitor.js"></script>
+</body>
+
+</html>
